@@ -6,9 +6,9 @@
 
 <div *ngIf="favorites">
 
-  <input #searchBox id="search-box" (keyup)="getData(searchBox.value)" />
+  <input #searchBox id="search-box" ng-keyup="updateSearchString(searchBox.value)" />
 
-
+  {{ searchString }}
   <table class='table'>
     <thead>
       <tr>
