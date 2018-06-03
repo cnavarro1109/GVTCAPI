@@ -2,13 +2,15 @@
 
 <p>This component demonstrates fetching data from the server.</p>
 
+<div class="form-group">
+  <input #searchBox id="search-box" placeholder="Search projects..." class="form-control col-12" (keyup)="updateSearchString(searchBox.value)" />
+  <!--<button class="btn btn-primary col-12" (click)="getData()">Submit</button>-->
+</div>
+{{ searchString }}
+{{ apiUrl }}
 <p *ngIf="!favorites"><em>Loading...</em></p>
 
 <div *ngIf="favorites">
-
-  <input #searchBox id="search-box" placeholder="Search projects..." class="form-control" ng-keyup="updateSearchString(searchBox.value)" />
-
-  {{ searchString }}
   <table class='table'>
     <thead>
       <tr>
@@ -32,3 +34,4 @@
     </tbody>
   </table>
 </div>
+

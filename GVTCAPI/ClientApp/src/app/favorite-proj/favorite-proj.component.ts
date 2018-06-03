@@ -1,38 +1,28 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-favorite-proj',
-  templateUrl: './favorite-proj.component.html'
+  templateUrl: './favorite-proj.component.html'  
 })
 export class FavComponent {
   public favorites: GitHubFavorites[];
   public searchString: string = "";
-  //public http: HttpClient;
+  private baseUrl: string = location.host; 
   
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-
-    ////Pageload
-    //http.get<GitHubFavorites[]>(baseUrl + 'api/SampleData/GetGitHubInfoAsync').subscribe(result => {
-    //  this.favorites = result;
-    //  console.log(result);
-    //}, error => console.error(error));
-
-    //this.ngOnInit(http, baseUrl);
-    this.ngOnInit(http, baseUrl);
+  constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {    
+    this.ngOnInit();
   }
 
-  ngOnInit(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    //this.getData(http, baseUrl);
-    this.getData(http, baseUrl);
+  ngOnInit() {
+    this.getData();
   }
-
-  getData(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {        
-
-    const params = new HttpParams().set('searchString', this.searchString);
+  getData() {        
+    const params = new HttpParams().set('searchString', this.searchString);   
     console.log(params);
     //Pageload
-    http.get<GitHubFavorites[]>(baseUrl + 'api/SampleData/GetGitHubInfoAsync', { params }).subscribe(result => {
+     this.http.get<GitHubFavorites[]>('//' + this.baseUrl + '/api/SampleData/GetGitHubInfoAsync', { params }).subscribe(result => {
       this.favorites = result;
       console.log(result);
     }, error => console.error(error));
@@ -40,8 +30,13 @@ export class FavComponent {
 
   updateSearchString(value: string) {
     this.searchString = value;
-    //this.getData();
+    this.getData();
+    console.log(this.searchString);
   }
+
+  updatePage() {
+    this.getData();
+  }  
 }
 
 interface GitHubFavorites {

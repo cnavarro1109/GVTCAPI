@@ -32,8 +32,8 @@ namespace GVTCAPI.Controllers
             var result = await ProcessRepos();
             if (!String.IsNullOrWhiteSpace(searchString))
             {
-                searchString = searchString.ToLower();
-                result = result.Where(x => x.Name.Contains(searchString) || x.Description.Contains(searchString));
+                searchString = searchString.ToLower().Replace(" ", "");
+                result = result.Where(x => x.Name.ToLower().Replace(" ", "").Contains(searchString) || x.Description.ToLower().Replace(" ", "").Contains(searchString));
             }
             return new JsonResult(result);
         }
@@ -54,6 +54,15 @@ namespace GVTCAPI.Controllers
             var repositories = serializer.ReadObject(await streamTask) as IEnumerable<Repository>;
             repositories = repositories.OrderBy(x => x.Name);
             return repositories;
-        }                
+        }        
+        
+        public async Task<JsonResult> CheckRateLimit()
+        {
+            client.DefaultRequestHeaders.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType));
+            client.DefaultRequestHeaders.Add("User-Agent", userAgent);
+
+            return new JsonResult( await client.GetStreamAsync("https://www.github.com/rate_limit"));
+        }
     }
 }
