@@ -17,8 +17,8 @@ import { FavComponent } from './favorite-proj/favorite-proj.component';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
+    //CounterComponent,
+    //FetchDataComponent,
     FavComponent
   ],
   imports: [
@@ -27,8 +27,8 @@ import { FavComponent } from './favorite-proj/favorite-proj.component';
     FormsModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      //{ path: 'counter', component: CounterComponent },
+      //{ path: 'fetch-data', component: FetchDataComponent },
       { path: 'favorite-proj', component: FavComponent }
     ])
   ],

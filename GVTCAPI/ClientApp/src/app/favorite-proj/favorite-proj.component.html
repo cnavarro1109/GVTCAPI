@@ -6,7 +6,7 @@
 
 <div *ngIf="favorites">
 
-  <input #searchBox id="search-box" ng-keyup="updateSearchString(searchBox.value)" />
+  <input #searchBox id="search-box" placeholder="Search projects..." class="form-control" ng-keyup="updateSearchString(searchBox.value)" />
 
   {{ searchString }}
   <table class='table'>

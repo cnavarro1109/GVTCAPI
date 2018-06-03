@@ -7,7 +7,7 @@
         <span class='icon-bar'></span>
         <span class='icon-bar'></span>
       </button>
-      <a class='navbar-brand' [routerLink]='["/"]'>GVTCAPI</a>
+      <a class='navbar-brand' [routerLink]='["/"]'>GVTC - API</a>
     </div>
     <div class='clearfix'></div>
     <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
@@ -16,20 +16,10 @@
           <a [routerLink]='["/"]' (click)='collapse()'>
             <span class='glyphicon glyphicon-home'></span> Home
           </a>
-        </li>
-        <li [routerLinkActive]='["link-active"]'>
-          <a [routerLink]='["/counter"]' (click)='collapse()'>
-            <span class='glyphicon glyphicon-education'></span> Counter
-          </a>
-        </li>
-        <li [routerLinkActive]='["link-active"]'>
-          <a [routerLink]='["/fetch-data"]' (click)='collapse()'>
-            <span class='glyphicon glyphicon-th-list'></span> Fetch data
-          </a>
-        </li>
+        </li>        
         <li [routerLinkActive]='["link-active"]'>
           <a [routerLink]='["/favorite-proj"]' (click)='collapse()'>
-            <span class='glyphicon glyphicon-th-list'></span> Favorite Project
+            <span class='glyphicon glyphicon-th-list'></span> Favorite Projects
           </a>
         </li>
       </ul>
