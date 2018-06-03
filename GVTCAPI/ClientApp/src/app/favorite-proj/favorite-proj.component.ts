@@ -30,7 +30,7 @@ export class FavComponent {
 
   updateSearchString(value: string) {
     this.searchString = value;
-    this.getData();
+    //this.getData();
     console.log(this.searchString);
   }
 

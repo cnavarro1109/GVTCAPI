@@ -1,11 +1,16 @@
 <h1>Favorite Projects</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p>Careful, GitHub only allows 10 requests per minute...</p>
 
-<div class="form-group">
-  <input #searchBox id="search-box" placeholder="Search projects..." class="form-control col-12" (keyup)="updateSearchString(searchBox.value)" />
-  <!--<button class="btn btn-primary col-12" (click)="getData()">Submit</button>-->
+<div class="">
+  <div class="row">
+    <input #searchBox id="search-box" placeholder="Search projects..." class="form-control" (keyup)="updateSearchString(searchBox.value)" />    
+  </div>
+  <div class="row">
+    <button class="btn btn-primary btn-sm btn-block" (click)="getData()">Submit</button>
+  </div>
 </div>
+
 {{ searchString }}
 {{ apiUrl }}
 <p *ngIf="!favorites"><em>Loading...</em></p>
